@@ -1,0 +1,14 @@
+# Copyright 2026 Google LLC
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+package(default_visibility = ["//visibility:public"])
+
+cc_binary(
+    name="gpuviz_micro_benchmark",
+    srcs=["nccl_telemetry_benchmark.cc"],
+    deps=[
+        "//src:nccl_stats",
+    ],
+    linkopts = ["-ldl"],  # Add this line to link against libdl
+)

@@ -1,0 +1,6 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name="nccl_net",
+    hdrs=["nccl_net.h"],
+)

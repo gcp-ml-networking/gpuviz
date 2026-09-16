@@ -1,0 +1,27 @@
+# Copyright 2026 Google LLC
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+module(name="gpuviz", version="1.0.0")
+
+bazel_dep(name="googletest", version = "1.14.0")
+bazel_dep(name="abseil-cpp", version="20250127.1")
+bazel_dep(name="protobuf", version="29.5", repo_name="com_google_protobuf")
+bazel_dep(name = "curl", version = "8.8.0.bcr.1", repo_name="curl")
+bazel_dep(name = "rules_python", version = "1.0.0")
+bazel_dep(name = "platforms", version="1.0.0")
+
+bazel_dep(name="acs", version="1.0.0")
+# TODO bazel does not recognize branch="main" here, so I copy pasted the latest commit hash here.
+git_override(module_name="acs", remote="https://github.com/GoogleCloudPlatform/agentcommunication_client", commit="79375c3d4a87d4d0d457fe7bdcd46cd5dbbc8a4a")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    is_default = True,
+    ignore_root_user_error = True,
+    python_version = "3.11",
+)
+
+register_toolchains(
+    "//toolchain:cross_compile_cc_toolchain_for_linux_arm64"
+)

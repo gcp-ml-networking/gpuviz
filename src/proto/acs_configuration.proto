@@ -1,0 +1,20 @@
+// Copyright 2026 Google LLC
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+syntax = "proto2";
+
+package gpuviz;
+
+message AcsConfiguration {
+  message AgentConfiguration {
+    // Recommended number of messages to send within a minute.
+    optional uint32 messages_per_minute = 1;
+  }
+
+  // The configuration version identifier.
+  optional string version = 1;
+
+  // Agent configuration.
+  optional AgentConfiguration agent_config = 2;
+}

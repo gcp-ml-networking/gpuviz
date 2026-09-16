@@ -1,0 +1,60 @@
+# Copyright 2026 Google LLC
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+load("@com_google_protobuf//bazel:proto_library.bzl", "proto_library")
+load("@com_google_protobuf//bazel:cc_proto_library.bzl", "cc_proto_library")
+load("@com_google_protobuf//bazel:py_proto_library.bzl", "py_proto_library")
+
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name="nccl_telemetry_proto",
+    srcs=["nccl_telemetry_proto.proto"],
+    deps=[
+        "@com_google_protobuf//:timestamp_proto",
+    ]
+)
+
+cc_proto_library(
+    name="nccl_telemetry_cc_proto",
+    deps=[":nccl_telemetry_proto"]
+)
+
+py_proto_library(
+    name="nccl_telemetry_py_proto",
+    deps=[":nccl_telemetry_proto"],
+)
+
+proto_library(
+    name="millisecond_bw_file_format_proto",
+    srcs=["millisecond_bw_file_format.proto"],
+    deps=[
+        "@com_google_protobuf//:timestamp_proto",
+    ],
+)
+
+cc_proto_library(
+    name="millisecond_bw_file_format_cc_proto",
+    deps=[":millisecond_bw_file_format_proto"],
+)
+
+py_proto_library(
+    name="millisecond_bw_file_format_py_proto",
+    deps=[":millisecond_bw_file_format_proto"],
+)
+
+proto_library(
+    name="acs_configuration_proto",
+    srcs=["acs_configuration.proto"],
+)
+
+cc_proto_library(
+    name="acs_configuration_cc_proto",
+    deps=[":acs_configuration_proto"],
+)
+
+py_proto_library(
+    name="acs_configuration_py_proto",
+    deps=[":acs_configuration_proto"],
+)

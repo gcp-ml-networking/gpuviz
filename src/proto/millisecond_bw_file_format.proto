@@ -1,0 +1,30 @@
+// Copyright 2026 Google LLC
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+syntax = "proto2";
+
+package gpuviz;
+
+import "google/protobuf/timestamp.proto";
+
+message NicData {
+    // IP address of the particular NIC
+    optional string ip_address = 1;
+    // Measured in the number of bytes received/transmitted in a given millisecond
+    repeated double tx_bandwidth_data = 2;
+    repeated double rx_bandwidth_data = 3;
+}
+
+message Batch {
+    // OS Process ID
+    optional string process_id = 1;
+    // Timestamp sourced from CLOCK_MONOTONIC and rounded down to
+    // the start of the millisecond.
+    optional google.protobuf.Timestamp time_stamp = 2;
+    repeated NicData nic_data = 3;
+}
+
+message MillisecondBandwidthInfo {
+    repeated Batch batches = 1;
+}

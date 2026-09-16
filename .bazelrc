@@ -1,0 +1,14 @@
+# Copyright 2026 Google LLC
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+build --define=DABSL_USE_CYCLECLOCK_FOR_GET_CURRENT_TIME_NANOS=1
+build:release --copt=-DNDEBUG
+build:release --copt=-O3
+build:release --copt=-fvisibility=hidden
+build:debug -c dbg
+build:debug --copt=-g
+build:debug --copt=-O0
+build:debug --copt=-fvisibility=hidden
+build --cxxopt='-std=c++17'
+build --workspace_status_command="bash scripts/dump_ver.sh"

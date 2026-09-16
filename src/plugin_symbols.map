@@ -1,0 +1,12 @@
+// Copyright 2026 Google LLC
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+{
+global:
+nccl_telemetry_stats_plugin_v1;
+nccl_telemetry_stats_plugin_v2;
+nccl_telemetry_stats_plugin_v3;
+nccl_telemetry_stats_plugin_v4;
+local:
+*;
+};
